@@ -1,0 +1,8 @@
+#FTX API details
+KEY=""
+SECRET=""
+#Database details (PostgreSQL)
+host=""
+db=""
+user=""
+password=""
