@@ -1,5 +1,5 @@
 #install pip
-apt install python3-pip
+apt install python3-pip -y
 
 #install all packages
 cd /root/ftx-journal
@@ -16,4 +16,4 @@ sudo npm install pm2@latest -g
 
 #Run pm2 job
 cd /root/ftx-journal
-pm2 start app.py --cron "*/10 * * * *" --interpreter python3
+pm2 start app.py --cron "*/10 * * * *" --interpreter python3 --name balance_collector
