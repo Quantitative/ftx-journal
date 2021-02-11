@@ -32,6 +32,8 @@ Connect to it through some sort of SSH terminal or however u want to connect to 
 
 7. The Database details can be taken from your heroku database, check tutorial or google how to find database credentials on heroku postgreSQL
 
+8. pm2 restart 0 -- restarts the data collector and makes it run now that the credentials are in place
+
 **Note:** If you want to change the time at which balance is grabbed make sure to edit the --cron in init.sh (where the PM2 job is starting), look up how cronjobs work to do this
 
 
