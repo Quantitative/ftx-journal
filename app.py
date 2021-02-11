@@ -1,38 +1,30 @@
 import hmac
 import requests
 import time
+from dateutil.parser import parse
+from client import FtxClient
 
-
-#For environment variables
-import os
-from os.path import join, dirname
-from dotenv import load_dotenv
-
-dotenv_path = join(dirname(__file__), '.env')
-load_dotenv(dotenv_path)
 
 class ftx_tracker():
 
     def __init__(self):
-        self.key                = os.getenv("KEY")
-        self.secret             = os.getenv("SECRET")
+        self.key                = "M5cZ4pgbCutRKT5UbLXQdmfxEpGAWt_P8a4d3u4W"
+        self.secret             = "2P8weUIPJiH8CTKg6FLdfiEmZTsfqd-udsNTkZTg"
+        self.client             = FtxClient(api_key=self.key, api_secret=self.secret)
         self.base_url           = "https://ftx.com/api"
-        self.endpoint_all_bal   = "/wallet/all_balances"
+        self.endpoint_account   = "/account"
 
         self.headers            = {}
 
+        self.get_account()
 
-    #Sets headers for authentication
-    def ftx_auth(self)
-        ts = int(time.time() * 1000)
-        request = Request('GET', self.endpoint)
-        prepared = request.prepare()
-        signature_payload = f'{ts}{prepared.method}{prepared.path_url}'.encode()
-        signature = hmac.new(self.key.encode(), signature_payload, 'sha256').hexdigest()
 
-        self.headers['FTX-KEY']  = self.secret
-        self.headers['FTX-SIGN'] = signature
-        self.headers['FTX-TS']   = str(ts)
+    def get_account(self):
+        data = self.client.get_account_info()
+
+        print(data)
+
+ftx_tracker()
 
 
     
