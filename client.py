@@ -1,3 +1,8 @@
+######
+######    ALL CREDIT FOR THE CODE BELOW GOES TO thom-gabriel on GitHub, repo: https://github.com/quan-digital/ftx
+######
+#####     Had to copy to change the ciso8160 library for dateutil
+
 import time
 import urllib.parse
 from typing import Optional, Dict, Any, List

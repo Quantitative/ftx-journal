@@ -3,6 +3,7 @@ import requests
 import time
 from client import FtxClient
 import psycopg2 as s3
+import time
 
 #For environment variables
 import os
@@ -65,3 +66,4 @@ class ftx_tracker():
 
 
 ftx_tracker()
+time.sleep(600-5) #Sleeps 10 minutes before grabbing data again

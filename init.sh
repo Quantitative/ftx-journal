@@ -16,4 +16,4 @@ sudo npm install pm2@latest -g
 
 #Run pm2 job
 cd /root/ftx-journal
-pm2 start app.py --cron "*/10 * * * *" --interpreter python3 --name balance_collector
+pm2 start app.py --interpreter python3 --name balance_collector
