@@ -20,7 +20,8 @@ class ftx_tracker():
 
 
     def get_account(self):
-        data = self.client.get_account_info()
+        data = self.client.get_balances()
+
 
         print(data)
 
