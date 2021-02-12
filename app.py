@@ -27,7 +27,7 @@ class ftx_tracker():
         self.host               = os.getenv("host")
         self.user               = os.getenv("user")
         self.password           = os.getenv("password")
-        self.table_name         = "balance"
+        self.table_name         = os.getenv("table_name")
 
         #Client/API connection
         self.client             = FtxClient(api_key=self.key, api_secret=self.secret)
@@ -58,12 +58,12 @@ class ftx_tracker():
             cursor.execute("INSERT INTO {} VALUES({}, {})".format(self.table_name, int(time.time()), usd))
             conn.commit()
 
-    # def show_data(self):
-    #     with s3.connect(host=self.host, database=self.db, user=self.user, password=self.password) as conn:
-    #         cursor = conn.cursor()
-    #         cursor.execute("SELECT * FROM {}".format(self.table_name))
-    #         print(cursor.fetchall())
+    def show_data(self):
+        with s3.connect(host=self.host, database=self.db, user=self.user, password=self.password) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM {}".format(self.table_name))
+            print(len(cursor.fetchall()))
 
 
 ftx_tracker()
-time.sleep(600-5) #Sleeps 10 minutes before grabbing data again
+time.sleep(290) #Sleeps 5 minutes before grabbing data again

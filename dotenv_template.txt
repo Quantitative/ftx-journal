@@ -6,3 +6,4 @@ host=""
 db=""
 user=""
 password=""
+table_name="balance" #This is something you can set yourself, name it whatever you want
