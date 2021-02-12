@@ -1,7 +1,7 @@
 import plotly.graph_objects as go
 import psycopg2 as s3
 import time
-1
+from datetime import datetime
 
 #For environment variables
 import os
@@ -29,13 +29,13 @@ class visualize():
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM {} WHERE timestamp > {}".format(self.table_name, self.lookback))
             data = cursor.fetchall()
-            self.timestamps = [d[0] for d in data]
+            self.timestamps = [datetime.utcfromtimestamp(d[0]) for d in data]
             self.balance    = [d[1] for d in data]
 
     def plot(self):
 
         self.grab_data()
-        
+
         fig = go.Figure()
 
         fig.add_trace(go.Scatter(
